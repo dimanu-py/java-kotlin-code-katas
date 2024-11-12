@@ -5,6 +5,7 @@ import org.dimanu.deployservice.application.DeploymentCreator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,7 +21,7 @@ public class CreateDeploymentController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> createDeployment(CreateDeploymentCommand command) {
+    public ResponseEntity<Void> createDeployment(@RequestBody CreateDeploymentCommand command) {
         deploymentCreator.create(command);
 
         return ResponseEntity.created(null).build();
