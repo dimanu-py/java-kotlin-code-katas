@@ -24,6 +24,14 @@ using Spring Boot and how to test it.
 
 The kata will be developed using Outside-In TDD approach.
 
+## Notes & Learnings
+
+- The InMemoryDeploymentRepository shouldn't be inside code production folder and be moved to test folder if we 
+were on a production environment.
+- The Outside-In TDD flow lead easily to next steps, literally the test failing will tell you what you need to do.
+- However, I find a bit difficult yet to organize the commits properly and don't let them be too big.
+
+
 ## Visit my GitHub profile for more katas 🚀
 
 [![Web](https://img.shields.io/badge/GitHub-Dimanu.py-14a1f0?style=for-the-badge&logo=github&logoColor=white&labelColor=101010)](https://github.com/dimanu-py/java-code-katas)
