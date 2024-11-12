@@ -16,13 +16,12 @@ class DeployCreatorControllerShould {
     @Mock
     private DeploymentRepository deploymentRepository;
 
-    @Mock
-    private Deployment deployment;
-
     @Test
-    void should_create_a_deployment() {
-        CreateDeploymentController deploymentController = new CreateDeploymentController();
+    void create_a_deployment() {
+        DeploymentCreator deploymentCreator = new DeploymentCreator(deploymentRepository);
+        CreateDeploymentController deploymentController = new CreateDeploymentController(deploymentCreator);
         CreateDeploymentCommand command = CreateDeploymentCommandMother.successful();
+        Deployment deployment = DeploymentMother.successful();
 
         ResponseEntity<?> response = deploymentController.createDeployment(command);
 

@@ -4,10 +4,10 @@ import java.util.Objects;
 
 public class Deployment {
 
-    private final String version;
-    private final Boolean success;
+    private final DeploymentVersion version;
+    private final DeploymentSuccess success;
 
-    public Deployment(String version, Boolean success) {
+    public Deployment(DeploymentVersion version, DeploymentSuccess success) {
         this.version = version;
         this.success = success;
     }

@@ -4,7 +4,15 @@ import org.springframework.http.ResponseEntity;
 
 public class CreateDeploymentController {
 
-    public ResponseEntity<?> createDeployment(CreateDeploymentCommand command) {
-        throw new UnsupportedOperationException("Not implemented yet");
+    private final DeploymentCreator deploymentCreator;
+
+    public CreateDeploymentController(DeploymentCreator deploymentCreator) {
+        this.deploymentCreator = deploymentCreator;
+    }
+
+    public ResponseEntity<Void> createDeployment(CreateDeploymentCommand command) {
+        deploymentCreator.create(command);
+
+        return ResponseEntity.created(null).build();
     }
 }
