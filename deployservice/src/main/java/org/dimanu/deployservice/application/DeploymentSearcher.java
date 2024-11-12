@@ -2,12 +2,14 @@ package org.dimanu.deployservice.application;
 
 import org.dimanu.deployservice.domain.Deployment;
 import org.dimanu.deployservice.domain.DeploymentRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
 
 import static java.util.stream.Collectors.toList;
 
+@Service
 public class DeploymentSearcher {
     private final DeploymentRepository deploymentRepository;
 
