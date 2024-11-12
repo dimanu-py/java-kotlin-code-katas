@@ -1,4 +1,4 @@
-package org.dimanu.deployservice.acceptance;
+package org.dimanu.deployservice.infra;
 
 import org.dimanu.deployservice.application.CreateDeploymentCommand;
 import org.dimanu.deployservice.application.CreateDeploymentCommandMother;
@@ -6,7 +6,6 @@ import org.dimanu.deployservice.application.DeploymentCreator;
 import org.dimanu.deployservice.domain.Deployment;
 import org.dimanu.deployservice.domain.DeploymentMother;
 import org.dimanu.deployservice.domain.DeploymentRepository;
-import org.dimanu.deployservice.infra.DeploymentPostController;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;

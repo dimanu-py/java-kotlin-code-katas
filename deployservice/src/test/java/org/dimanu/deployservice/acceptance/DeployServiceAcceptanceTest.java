@@ -1,4 +1,4 @@
-package org.dimanu.deployservice.infra;
+package org.dimanu.deployservice.acceptance;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
@@ -20,7 +20,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class DeployserviceApplicationTests {
+public class DeployServiceAcceptanceTest {
 
     @LocalServerPort
     private int port;

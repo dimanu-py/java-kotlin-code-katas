@@ -1,8 +1,7 @@
-package org.dimanu.deployservice.acceptance;
+package org.dimanu.deployservice.infra;
 
 import org.dimanu.deployservice.application.DeploymentSearcher;
 import org.dimanu.deployservice.domain.DeploymentRepository;
-import org.dimanu.deployservice.infra.DeploymentGetController;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
