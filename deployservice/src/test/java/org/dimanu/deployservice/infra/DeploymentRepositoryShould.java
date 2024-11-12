@@ -49,4 +49,16 @@ class DeploymentRepositoryShould {
         assertThat(expectedDeployment).isNull();
     }
 
+    @Test
+    void find_all_deployments() {
+        Deployment deployment1 = DeploymentMother.withVersion("1.0.0");
+        Deployment deployment2 = DeploymentMother.withVersion("2.0.0");
+        repository.save(deployment1);
+        repository.save(deployment2);
+
+        List<Deployment> deployments = repository.searchAll();
+
+        assertThat(deployments).containsExactlyInAnyOrder(deployment1, deployment2);
+    }
+
 }
