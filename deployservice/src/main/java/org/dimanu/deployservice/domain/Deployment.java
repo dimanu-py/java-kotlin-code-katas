@@ -8,10 +8,12 @@ public class Deployment {
 
     private final DeploymentVersion version;
     private final DeploymentSuccess success;
+    private final DeploymentTimeCreation timestamp;
 
-    public Deployment(DeploymentVersion version, DeploymentSuccess success) {
+    public Deployment(DeploymentVersion version, DeploymentSuccess success, DeploymentTimeCreation timestamp) {
         this.version = version;
         this.success = success;
+        this.timestamp = timestamp;
     }
 
     @Override
@@ -40,6 +42,7 @@ public class Deployment {
 
         primitiveRepresentation.put("version", version.value());
         primitiveRepresentation.put("success", success.value());
+        primitiveRepresentation.put("timestamp", timestamp.value());
 
         return primitiveRepresentation;
     }

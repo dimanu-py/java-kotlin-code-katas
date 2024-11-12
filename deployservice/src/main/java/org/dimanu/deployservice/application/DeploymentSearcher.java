@@ -4,6 +4,7 @@ import org.dimanu.deployservice.domain.Deployment;
 import org.dimanu.deployservice.domain.DeploymentRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
@@ -28,7 +29,8 @@ public class DeploymentSearcher {
         Map<String, Object> deploymentValue = deployment.value();
         String version = (String) deploymentValue.get("version");
         Boolean success = (Boolean) deploymentValue.get("success");
+        LocalDateTime creationDate = (LocalDateTime) deploymentValue.get("timestamp");
 
-        return new DeploymentResponse(version, success);
+        return new DeploymentResponse(version, success, creationDate);
     }
 }

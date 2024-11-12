@@ -1,9 +1,6 @@
 package org.dimanu.deployservice.application;
 
-import org.dimanu.deployservice.domain.Deployment;
-import org.dimanu.deployservice.domain.DeploymentRepository;
-import org.dimanu.deployservice.domain.DeploymentSuccess;
-import org.dimanu.deployservice.domain.DeploymentVersion;
+import org.dimanu.deployservice.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,16 +8,20 @@ import org.springframework.stereotype.Service;
 public class DeploymentCreator {
 
     private final DeploymentRepository deploymentRepository;
+    private final Clock clock;
 
     @Autowired
-    public DeploymentCreator(DeploymentRepository deploymentRepository) {
+    public DeploymentCreator(DeploymentRepository deploymentRepository, Clock clock) {
         this.deploymentRepository = deploymentRepository;
+        this.clock = clock;
     }
 
     public void create(CreateDeploymentCommand command) {
         DeploymentVersion version = new DeploymentVersion(command.getVersion());
         DeploymentSuccess success = new DeploymentSuccess(command.getSuccess());
-        Deployment deployment = new Deployment(version, success);
+        DeploymentTimeCreation time = new DeploymentTimeCreation(clock.now());
+
+        Deployment deployment = new Deployment(version, success, time);
 
         deploymentRepository.save(deployment);
     }
