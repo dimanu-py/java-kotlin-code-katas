@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/deployments")
-public class CreateDeploymentController {
+public class DeploymentPostController {
 
     private final DeploymentCreator deploymentCreator;
 
     @Autowired
-    public CreateDeploymentController(DeploymentCreator deploymentCreator) {
+    public DeploymentPostController(DeploymentCreator deploymentCreator) {
         this.deploymentCreator = deploymentCreator;
     }
 

@@ -1,9 +1,12 @@
-package org.dimanu.deployservice.application;
+package org.dimanu.deployservice.acceptance;
 
+import org.dimanu.deployservice.application.CreateDeploymentCommand;
+import org.dimanu.deployservice.application.CreateDeploymentCommandMother;
+import org.dimanu.deployservice.application.DeploymentCreator;
 import org.dimanu.deployservice.domain.Deployment;
 import org.dimanu.deployservice.domain.DeploymentMother;
 import org.dimanu.deployservice.domain.DeploymentRepository;
-import org.dimanu.deployservice.infra.CreateDeploymentController;
+import org.dimanu.deployservice.infra.DeploymentPostController;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -15,7 +18,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
-class DeployCreatorControllerShould {
+class DeploymentPostControllerShould {
 
     @Mock
     private DeploymentRepository deploymentRepository;
@@ -23,7 +26,7 @@ class DeployCreatorControllerShould {
     @Test
     void create_a_deployment() {
         DeploymentCreator deploymentCreator = new DeploymentCreator(deploymentRepository);
-        CreateDeploymentController deploymentController = new CreateDeploymentController(deploymentCreator);
+        DeploymentPostController deploymentController = new DeploymentPostController(deploymentCreator);
         CreateDeploymentCommand command = CreateDeploymentCommandMother.successful();
         Deployment deployment = DeploymentMother.successful();
 
