@@ -1,8 +1,12 @@
 package org.dimanu.deployservice.domain;
 
+import java.util.List;
+
 public interface DeploymentRepository {
 
-    public void save(Deployment deployment);
+    void save(Deployment deployment);
 
-    public Deployment searchBy(String version);
+    Deployment searchBy(String version);
+
+    List<Deployment> searchAll();
 }

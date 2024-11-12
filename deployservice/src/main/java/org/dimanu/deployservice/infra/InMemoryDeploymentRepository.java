@@ -5,6 +5,7 @@ import org.dimanu.deployservice.domain.DeploymentRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
+import java.util.List;
 
 @Repository
 public class InMemoryDeploymentRepository implements DeploymentRepository {
@@ -19,5 +20,10 @@ public class InMemoryDeploymentRepository implements DeploymentRepository {
         @Override
         public Deployment searchBy(String version) {
                 return deployments.get(version);
+        }
+
+        @Override
+        public List<Deployment> searchAll() {
+                throw new UnsupportedOperationException("Not implemented yet");
         }
 }

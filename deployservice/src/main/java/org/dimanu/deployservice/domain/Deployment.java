@@ -1,5 +1,7 @@
 package org.dimanu.deployservice.domain;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class Deployment {
@@ -32,5 +34,13 @@ public class Deployment {
     public String version() {
         return version.value();
     }
+
+    public Map<String, Object> value() {
+        HashMap<String, Object> primitiveRepresentation = new HashMap<>();
+
+        primitiveRepresentation.put("version", version.value());
+        primitiveRepresentation.put("success", success.value());
+
+        return primitiveRepresentation;
     }
 }
