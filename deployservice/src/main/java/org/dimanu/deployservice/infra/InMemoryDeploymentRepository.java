@@ -2,9 +2,11 @@ package org.dimanu.deployservice.infra;
 
 import org.dimanu.deployservice.domain.Deployment;
 import org.dimanu.deployservice.domain.DeploymentRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 
+@Repository
 public class InMemoryDeploymentRepository implements DeploymentRepository {
 
         private final HashMap<String, Deployment> deployments = new HashMap<>();
