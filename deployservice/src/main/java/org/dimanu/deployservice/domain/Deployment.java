@@ -30,6 +30,7 @@ public class Deployment {
     }
 
     public String version() {
-        return version.toString();
+        return version.value();
+    }
     }
 }

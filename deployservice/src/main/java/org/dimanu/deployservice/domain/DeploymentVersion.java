@@ -15,7 +15,7 @@ public class DeploymentVersion {
         this.version = version;
     }
 
-    public String version() {
+    public String value() {
         return version;
     }
 
