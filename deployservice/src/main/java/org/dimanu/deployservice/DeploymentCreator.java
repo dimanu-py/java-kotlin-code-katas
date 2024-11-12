@@ -1,9 +1,14 @@
 package org.dimanu.deployservice;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
 public class DeploymentCreator {
 
     private final DeploymentRepository deploymentRepository;
 
+    @Autowired
     public DeploymentCreator(DeploymentRepository deploymentRepository) {
         this.deploymentRepository = deploymentRepository;
     }
