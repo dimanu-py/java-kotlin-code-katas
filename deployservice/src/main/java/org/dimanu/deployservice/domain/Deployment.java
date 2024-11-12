@@ -29,4 +29,7 @@ public class Deployment {
         return Objects.hash(version, success);
     }
 
+    public String version() {
+        return version.toString();
+    }
 }

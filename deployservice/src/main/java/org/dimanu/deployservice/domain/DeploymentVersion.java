@@ -31,4 +31,9 @@ public class DeploymentVersion {
     public int hashCode() {
         return Objects.hash(version);
     }
+
+    @Override
+    public String toString() {
+        return version;
+    }
 }

@@ -8,4 +8,11 @@ public class DeploymentMother {
                 DeploymentSuccessMother.successful()
         );
     }
+
+    public static Deployment withVersion(String version) {
+        return new Deployment(
+                DeploymentVersionMother.create(version),
+                DeploymentSuccessMother.successful()
+        );
+    }
 }
