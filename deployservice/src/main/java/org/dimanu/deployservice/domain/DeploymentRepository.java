@@ -1,4 +1,4 @@
-package org.dimanu.deployservice;
+package org.dimanu.deployservice.domain;
 
 public interface DeploymentRepository {
 

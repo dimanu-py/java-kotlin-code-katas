@@ -1,4 +1,4 @@
-package org.dimanu.deployservice;
+package org.dimanu.deployservice.domain;
 
 import java.util.Objects;
 

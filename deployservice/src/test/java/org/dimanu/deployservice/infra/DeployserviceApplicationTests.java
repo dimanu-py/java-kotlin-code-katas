@@ -1,9 +1,10 @@
-package org.dimanu.deployservice;
+package org.dimanu.deployservice.infra;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import org.dimanu.deployservice.domain.Clock;
 import org.hamcrest.Matcher;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

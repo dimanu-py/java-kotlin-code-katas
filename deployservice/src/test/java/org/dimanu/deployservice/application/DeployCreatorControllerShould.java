@@ -1,5 +1,9 @@
-package org.dimanu.deployservice;
+package org.dimanu.deployservice.application;
 
+import org.dimanu.deployservice.domain.Deployment;
+import org.dimanu.deployservice.domain.DeploymentMother;
+import org.dimanu.deployservice.domain.DeploymentRepository;
+import org.dimanu.deployservice.infra.CreateDeploymentController;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;

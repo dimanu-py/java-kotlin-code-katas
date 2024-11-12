@@ -1,5 +1,9 @@
-package org.dimanu.deployservice;
+package org.dimanu.deployservice.application;
 
+import org.dimanu.deployservice.domain.Deployment;
+import org.dimanu.deployservice.domain.DeploymentRepository;
+import org.dimanu.deployservice.domain.DeploymentSuccess;
+import org.dimanu.deployservice.domain.DeploymentVersion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,5 +1,7 @@
-package org.dimanu.deployservice;
+package org.dimanu.deployservice.infra;
 
+import org.dimanu.deployservice.application.CreateDeploymentCommand;
+import org.dimanu.deployservice.application.DeploymentCreator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

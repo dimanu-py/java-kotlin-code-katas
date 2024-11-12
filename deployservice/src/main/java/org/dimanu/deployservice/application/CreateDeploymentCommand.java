@@ -1,4 +1,4 @@
-package org.dimanu.deployservice;
+package org.dimanu.deployservice.application;
 
 import lombok.Data;
 
