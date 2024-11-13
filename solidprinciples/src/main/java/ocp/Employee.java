@@ -2,11 +2,11 @@ package ocp;
 
 public class Employee {
 
-    private int salary;
-    private int bonus;
+    protected int salary;
+    protected int bonus;
     private EmployeeType type;
 
-    Employee(int salary, int bonus, EmployeeType type) {
+    public Employee(int salary, int bonus, EmployeeType type) {
         this.salary = salary;
         this.bonus = bonus;
         this.type = type;
