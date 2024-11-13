@@ -1,5 +1,6 @@
 package ocp;
 
+import ocp.inheritancesolution.Employee;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

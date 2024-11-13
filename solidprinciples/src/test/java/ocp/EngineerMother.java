@@ -1,5 +1,6 @@
 package ocp;
 
+import ocp.inheritancesolution.Employee;
 import ocp.inheritancesolution.Engineer;
 
 public class EngineerMother {
