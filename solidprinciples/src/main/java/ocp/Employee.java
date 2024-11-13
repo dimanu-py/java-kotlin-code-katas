@@ -14,8 +14,6 @@ public class Employee {
 
     public int payAmount() {
         switch (this.type) {
-            case ENGINEER:
-                return salary;
             default:
                 return 0;
         }
