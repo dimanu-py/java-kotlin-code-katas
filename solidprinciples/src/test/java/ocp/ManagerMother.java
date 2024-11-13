@@ -1,8 +1,10 @@
 package ocp;
 
+import ocp.inheritancesolution.Manager;
+
 public class ManagerMother {
 
     public static Employee withSalaryAndBonus(int salary, int bonus) {
-        return new Employee(salary, bonus, EmployeeType.MANAGER);
+        return new Manager(salary, bonus);
     }
 }
