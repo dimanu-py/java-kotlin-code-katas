@@ -5,12 +5,12 @@ plugins {
 group = "org.dimanu"
 version = "1.0-SNAPSHOT"
 
-repositories {
-    mavenCentral()
-}
-
 allprojects {
     apply(plugin = "java")
+
+    repositories {
+        mavenCentral()
+    }
 
     dependencies {
         implementation("org.mockito:mockito-junit-jupiter:5.12.0")

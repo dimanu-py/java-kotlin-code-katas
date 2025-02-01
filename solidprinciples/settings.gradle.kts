@@ -1,2 +1,2 @@
 rootProject.name = "solidprinciples"
-include("base_code")
+include("solution", "base_code")
