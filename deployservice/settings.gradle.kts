@@ -1,2 +1,2 @@
 rootProject.name = "deployservice"
-include("solution")
+include("solution", "base_code")
