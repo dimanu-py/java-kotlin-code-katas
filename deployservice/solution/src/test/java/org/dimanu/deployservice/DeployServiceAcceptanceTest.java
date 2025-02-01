@@ -1,4 +1,4 @@
-package org.dimanu.deployservice.acceptance;
+package org.dimanu.deployservice;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;

@@ -1,4 +1,4 @@
-package org.dimanu.deployservice.acceptance;
+package org.dimanu.deployservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

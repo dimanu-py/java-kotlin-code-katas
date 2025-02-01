@@ -13,22 +13,27 @@ java {
     }
 }
 
-repositories {
-    mavenCentral()
+allprojects {
+    apply(plugin = "java")
+    apply(plugin = "io.spring.dependency-management")
+    apply(plugin = "org.springframework.boot")
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        implementation("org.springframework.boot:spring-boot-starter-web")
+        testImplementation("org.springframework.boot:spring-boot-starter-test")
+        testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+        testImplementation("io.rest-assured:rest-assured")
+        testImplementation("io.rest-assured:rest-assured-common")
+        testImplementation("io.rest-assured:json-path")
+        testImplementation("io.rest-assured:xml-path")
+    }
+
+    tasks.withType<Test> {
+        useJUnitPlatform()
+    }
 }
 
-dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-web")
-    compileOnly("org.projectlombok:lombok")
-    annotationProcessor("org.projectlombok:lombok")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-    testImplementation("io.rest-assured:rest-assured")
-    testImplementation("io.rest-assured:rest-assured-common")
-    testImplementation("io.rest-assured:json-path")
-    testImplementation("io.rest-assured:xml-path")
-}
-
-tasks.withType<Test> {
-    useJUnitPlatform()
-}
