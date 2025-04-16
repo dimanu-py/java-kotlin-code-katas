@@ -9,19 +9,12 @@ open class TripService {
     fun getTripsByUser(user: User): List<Trip> {
         var tripList: List<Trip> = ArrayList<Trip>()
         var loggedUser: User? = getLoggedUser()
-        var isFriend: Boolean = false
 
         if (loggedUser == null) {
             throw UserNotLoggedInException()
         }
 
-        for (friend in user.friends) {
-            if (friend == loggedUser) {
-                isFriend = true
-                break
-            }
-        }
-        if (isFriend) {
+        if (user.isFriendWith(loggedUser)) {
             tripList = getFriendsTrips(user)
         }
         return tripList
