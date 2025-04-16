@@ -12,6 +12,10 @@ class SeamTripService(private val loggedUser: User?) : TripService() {
     override fun getLoggedUser(): User? {
         return loggedUser
     }
+
+    override fun getFriendsTrips(user: User): List<Trip> {
+        return user.trips
+    }
 }
 
 
