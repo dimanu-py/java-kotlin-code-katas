@@ -52,9 +52,7 @@ class TripServiceShould {
     fun `user gets its friends trips`() {
         this.loggedUser = applicationUser
         val tripService = SeamTripService(loggedUser)
-        val friend = UserMother.any()
-        friend.addFriend(loggedUser!!)
-        friend.addTrip(canadaTrip)
+        val friend = UserMother.withFriendsAndTrips(friends = listOf(loggedUser!!), trips = listOf(canadaTrip))
 
         val trips = tripService.getTripsByUser(friend)
 

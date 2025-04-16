@@ -20,10 +20,8 @@ class UserShould {
 
     @Test
     fun `be able to add trips`() {
-        val user = UserMother.any()
         val trip = TripMother.any()
-
-        user.addTrip(trip)
+        val user = UserMother.withTrips(listOf(trip))
 
         assert(user.trips.isNotEmpty())
         assert(user.trips.contains(trip))
@@ -31,10 +29,8 @@ class UserShould {
 
     @Test
     fun `be able to add friends`() {
-        val user = UserMother.any()
         val friend = UserMother.any()
-
-        user.addFriend(friend)
+        val user = UserMother.withFriends(listOf(friend))
 
         assert(user.friends.isNotEmpty())
         assert(user.friends.contains(friend))
@@ -50,8 +46,8 @@ class UserShould {
 
     @Test
     fun `be able to know if user is a friend`() {
-        val user = UserMother.any()
         val friend = UserMother.any()
+        val user = UserMother.withFriends(listOf(friend))
 
         user.addFriend(friend)
 
