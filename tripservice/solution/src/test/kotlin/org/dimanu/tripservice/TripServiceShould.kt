@@ -6,23 +6,27 @@ import org.dimanu.tripservice.user.User
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
-class SeamTripService : TripService() {
+class SeamTripService(private val loggedUser: User?) : TripService() {
 
     override fun getLoggedUser(): User? {
-        return null
+        return loggedUser
     }
 }
 
 
 class TripServiceShould {
 
+    private val guestUser = null
+    private val anyUser = User()
+    private var loggedUser: User? = null
+
     @Test
     fun `not logged in user cannot interact with application`() {
-        val tripService = SeamTripService()
-        val guestUser = User()
+        loggedUser = guestUser
+        val tripService = SeamTripService(loggedUser)
 
         assertThrows<UserNotLoggedInException> {
-            tripService.getTripsByUser(guestUser)
+            tripService.getTripsByUser(anyUser)
         }
     }
 }
