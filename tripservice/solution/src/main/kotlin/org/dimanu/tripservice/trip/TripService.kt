@@ -8,7 +8,7 @@ class TripService {
 
     fun getTripsByUser(user: User): List<Trip> {
         var tripList: List<Trip> = ArrayList<Trip>()
-        var loggedUser: User? = UserSession.instance.loggedUser
+        var loggedUser: User? = getLoggedUser()
         var isFriend: Boolean = false
 
         if (loggedUser != null) {
@@ -26,4 +26,6 @@ class TripService {
             throw UserNotLoggedInException()
         }
     }
+
+    private fun getLoggedUser() = UserSession.instance.loggedUser
 }
