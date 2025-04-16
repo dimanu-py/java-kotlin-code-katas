@@ -18,4 +18,8 @@ class User {
     fun addTrip(trip: Trip) {
         _trips.add(trip)
     }
+
+    fun isFriendWith(user: User): Boolean {
+        return _friends.contains(user)
+    }
 }

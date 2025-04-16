@@ -39,4 +39,22 @@ class UserShould {
         assert(user.friends.isNotEmpty())
         assert(user.friends.contains(friend))
     }
+
+    @Test
+    fun `be able to know if user is not a friend`() {
+        val user = UserMother.any()
+        val friend = UserMother.any()
+
+        assert(!user.isFriendWith(friend))
+    }
+
+    @Test
+    fun `be able to know if user is a friend`() {
+        val user = UserMother.any()
+        val friend = UserMother.any()
+
+        user.addFriend(friend)
+
+        assert(user.isFriendWith(friend))
+    }
 }
