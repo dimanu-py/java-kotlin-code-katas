@@ -6,6 +6,13 @@ import org.dimanu.tripservice.user.User
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
+class SeamTripService : TripService() {
+
+    override fun getLoggedUser(): User? {
+        return null
+    }
+}
+
 
 class TripServiceShould {
 

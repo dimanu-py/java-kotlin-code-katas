@@ -4,7 +4,7 @@ import org.dimanu.tripservice.exception.UserNotLoggedInException
 import org.dimanu.tripservice.user.User
 import org.dimanu.tripservice.user.UserSession
 
-class TripService {
+open class TripService {
 
     fun getTripsByUser(user: User): List<Trip> {
         var tripList: List<Trip> = ArrayList<Trip>()
@@ -27,5 +27,5 @@ class TripService {
         }
     }
 
-    private fun getLoggedUser() = UserSession.instance.loggedUser
+    protected open fun getLoggedUser() = UserSession.instance.loggedUser
 }
