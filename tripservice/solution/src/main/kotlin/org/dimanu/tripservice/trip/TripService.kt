@@ -11,20 +11,20 @@ open class TripService {
         var loggedUser: User? = getLoggedUser()
         var isFriend: Boolean = false
 
-        if (loggedUser != null) {
-            for (friend in user.friends) {
-                if (friend == loggedUser) {
-                    isFriend = true
-                    break
-                }
-            }
-            if (isFriend) {
-                tripList = getFriendsTrips(user)
-            }
-            return tripList
-        } else {
+        if (loggedUser == null) {
             throw UserNotLoggedInException()
         }
+
+        for (friend in user.friends) {
+            if (friend == loggedUser) {
+                isFriend = true
+                break
+            }
+        }
+        if (isFriend) {
+            tripList = getFriendsTrips(user)
+        }
+        return tripList
     }
 
     protected open fun getFriendsTrips(user: User) = TripDAO.findTripsByUser(user)
