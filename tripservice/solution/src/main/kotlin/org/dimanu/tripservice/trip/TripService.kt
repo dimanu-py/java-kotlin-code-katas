@@ -8,11 +8,7 @@ open class TripService {
 
     fun getTripsByUser(user: User): List<Trip> {
         var tripList: List<Trip> = ArrayList<Trip>()
-        var loggedUser: User? = getLoggedUser()
-
-        if (loggedUser == null) {
-            throw UserNotLoggedInException()
-        }
+        val loggedUser: User = getLoggedUser() ?: throw UserNotLoggedInException()
 
         if (user.isFriendWith(loggedUser)) {
             tripList = getFriendsTrips(user)
