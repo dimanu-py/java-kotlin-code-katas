@@ -18,7 +18,7 @@ class TripServiceShould {
 
     @Test
     fun `not logged in user cannot interact with application`() {
-        val tripService = TripService()
+        val tripService = SeamTripService()
         val guestUser = User()
 
         assertThrows<UserNotLoggedInException> {
