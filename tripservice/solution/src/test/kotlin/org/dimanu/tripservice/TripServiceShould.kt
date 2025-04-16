@@ -22,9 +22,9 @@ class SeamTripService(private val loggedUser: User?) : TripService() {
 class TripServiceShould {
 
     private val guestUser = null
-    private val anyUser = User()
-    private val applicationUser = User()
-    private val canadaTrip = Trip()
+    private val anyUser = UserMother.any()
+    private val applicationUser = UserMother.any()
+    private val canadaTrip = TripMother.any()
     private var loggedUser: User? = null
 
     @Test
@@ -41,7 +41,7 @@ class TripServiceShould {
     fun `user gets no trips when is not friend with logged user`() {
         this.loggedUser = applicationUser
         val tripService = SeamTripService(loggedUser)
-        val stranger = User()
+        val stranger = UserMother.any()
 
         val trips = tripService.getTripsByUser(stranger)
 
@@ -52,7 +52,7 @@ class TripServiceShould {
     fun `user gets its friends trips`() {
         this.loggedUser = applicationUser
         val tripService = SeamTripService(loggedUser)
-        val friend = User()
+        val friend = UserMother.any()
         friend.addFriend(loggedUser!!)
         friend.addTrip(canadaTrip)
 
