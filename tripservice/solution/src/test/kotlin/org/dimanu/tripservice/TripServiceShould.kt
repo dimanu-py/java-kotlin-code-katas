@@ -7,11 +7,7 @@ import org.dimanu.tripservice.user.User
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
-class SeamTripService(private val loggedUser: User?) : TripService() {
-
-    override fun getLoggedUser(): User? {
-        return loggedUser
-    }
+class SeamTripService(private val loggedUser: User?) : TripService(loggedUser) {
 
     override fun getFriendsTrips(user: User): List<Trip> {
         return user.trips
