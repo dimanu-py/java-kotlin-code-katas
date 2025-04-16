@@ -18,6 +18,7 @@ class TripServiceShould {
 
     private val guestUser = null
     private val anyUser = User()
+    private val applicationUser = User()
     private var loggedUser: User? = null
 
     @Test
@@ -28,5 +29,16 @@ class TripServiceShould {
         assertThrows<UserNotLoggedInException> {
             tripService.getTripsByUser(anyUser)
         }
+    }
+
+    @Test
+    fun `user gets no trips when is not friend with logged user`() {
+        loggedUser = applicationUser
+        val tripService = SeamTripService(loggedUser)
+        val stranger = User()
+
+        val trips = tripService.getTripsByUser(stranger)
+
+        assert(trips.isEmpty())
     }
 }
