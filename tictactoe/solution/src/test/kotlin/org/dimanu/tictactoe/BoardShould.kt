@@ -31,7 +31,7 @@ class BoardShould {
     }
 
     @Test
-    fun `detect when board is full`() {
+    fun `detect board is full when all tiles are marked`() {
         board.playOn(Tile.TOP_LEFT, Player.PLAYER_X)
         board.playOn(Tile.TOP_MIDDLE, Player.PLAYER_O)
         board.playOn(Tile.TOP_RIGHT, Player.PLAYER_X)
@@ -46,7 +46,7 @@ class BoardShould {
     }
 
     @Test
-    fun `detect when board is not full`() {
+    fun `detect board is not full if not all tiles are marked`() {
         board.playOn(Tile.TOP_LEFT, Player.PLAYER_X)
         board.playOn(Tile.TOP_MIDDLE, Player.PLAYER_O)
         board.playOn(Tile.TOP_RIGHT, Player.PLAYER_X)
