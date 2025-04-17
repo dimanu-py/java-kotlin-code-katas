@@ -1,7 +1,7 @@
-# :coffee: Java Code Katas :coffee:
+# :coffee: Java & Kotlin Code Katas :coffee:
 
 > [!NOTE]
-> All these katas are solved using Java. Most of the katas are configured in a similar way
+> All these katas are solved using Java or Kotlin. Most of the katas are configured in a similar way
 > using Gradle, JUnit 5, and Mockito. Those katas that need extra or different configurations
 > will have specific instructions in their README files.
 
@@ -36,7 +36,9 @@ gradle test --tests "com.dimanu.katas.kataName.className.methodName"
 
 ## Katas
 
-- [x] [Deploy Service](deployservice/docs/README.md)
+- [x] [Deploy Service](deployservice/README.md)
+- [ ] [SOLID Principles](solidprinciples/README.md)
+- [x] [Trip Service](tripservice/README.md)
 
 ## Visit my GitHub profile for more projects 🚀
 
