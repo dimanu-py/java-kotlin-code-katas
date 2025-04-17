@@ -1,21 +1,22 @@
 package org.dimanu.tripservice
 
+import io.mockk.every
+import io.mockk.mockk
 import org.dimanu.tripservice.exception.UserNotLoggedInException
-import org.dimanu.tripservice.trip.Trip
+import org.dimanu.tripservice.trip.TripRepository
 import org.dimanu.tripservice.trip.TripService
 import org.dimanu.tripservice.user.User
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
-class SeamTripService(private val loggedUser: User?) : TripService(loggedUser) {
+class SeamTripService(private val loggedUser: User?, private val tripRepository: TripRepository) : TripService(loggedUser, tripRepository) {
 
-    override fun getFriendsTrips(user: User): List<Trip> {
-        return user.trips
-    }
 }
 
 
 class TripServiceShould {
+
+    private val tripRepository = mockk<TripRepository>()
 
     private val guestUser = null
     private val anyUser = UserMother.any()
@@ -26,7 +27,7 @@ class TripServiceShould {
     @Test
     fun `not logged in user cannot interact with application`() {
         this.loggedUser = guestUser
-        val tripService = SeamTripService(loggedUser)
+        val tripService = SeamTripService(loggedUser, tripRepository)
 
         assertThrows<UserNotLoggedInException> {
             tripService.getTripsByUser(anyUser)
@@ -36,7 +37,7 @@ class TripServiceShould {
     @Test
     fun `user gets no trips when is not friend with logged user`() {
         this.loggedUser = applicationUser
-        val tripService = SeamTripService(loggedUser)
+        val tripService = SeamTripService(loggedUser, tripRepository)
         val stranger = UserMother.any()
 
         val trips = tripService.getTripsByUser(stranger)
@@ -47,8 +48,9 @@ class TripServiceShould {
     @Test
     fun `user gets its friends trips`() {
         this.loggedUser = applicationUser
-        val tripService = SeamTripService(loggedUser)
+        val tripService = SeamTripService(loggedUser, tripRepository)
         val friend = UserMother.withFriendsAndTrips(friends = listOf(loggedUser!!), trips = listOf(canadaTrip))
+        every { tripRepository.findTripsByUser(any()) } returns listOf(canadaTrip)
 
         val trips = tripService.getTripsByUser(friend)
 
