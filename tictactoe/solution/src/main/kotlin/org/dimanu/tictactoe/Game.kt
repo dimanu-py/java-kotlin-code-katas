@@ -2,11 +2,7 @@ package org.dimanu.tictactoe
 
 class Game(private var board: Board, private var winningRules: WinningRules) {
     private var currentPlayer: Player = Player.PLAYER_X
-    private var status: GameStatus = GameStatus.Playing
-
-    fun toPlay(): Player {
-        return currentPlayer
-    }
+    private var status: GameStatus = GameStatus.Playing(currentPlayer)
 
     fun play(tileToPlay: Tile) {
         if (isIllegalPlay(tileToPlay)) return
@@ -17,7 +13,7 @@ class Game(private var board: Board, private var winningRules: WinningRules) {
             isADraw() -> GameStatus.Draw
             else -> {
                 currentPlayer = currentPlayer.nextPlayerToPlay()
-                GameStatus.Playing
+                GameStatus.Playing(currentPlayer)
             }
         }
     }

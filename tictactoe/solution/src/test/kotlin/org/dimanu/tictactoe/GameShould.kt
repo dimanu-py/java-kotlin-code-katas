@@ -15,14 +15,16 @@ class GameShould {
 
     @Test
     fun `wait for player X to play first`() {
-        assertEquals(Player.PLAYER_X, game.toPlay())
+        val expectedStatus = GameStatus.Playing(Player.PLAYER_X)
+        assertEquals(expectedStatus, game.status())
     }
 
     @Test
     fun `wait for player O to play after player X`() {
         game.play(Tile.TOP_LEFT)
 
-        assertEquals(Player.PLAYER_O, game.toPlay())
+        val expectedStatus = GameStatus.Playing(Player.PLAYER_O)
+        assertEquals(expectedStatus, game.status())
     }
 
     @Test
@@ -30,7 +32,8 @@ class GameShould {
         game.play(Tile.TOP_LEFT)
         game.play(Tile.TOP_MIDDLE)
 
-        assertEquals(Player.PLAYER_X, game.toPlay())
+        val expectedStatus = GameStatus.Playing(Player.PLAYER_X)
+        assertEquals(expectedStatus, game.status())
     }
 
     @Test
@@ -38,7 +41,8 @@ class GameShould {
         game.play(Tile.TOP_LEFT)
         game.play(Tile.TOP_LEFT)
 
-        assertEquals(Player.PLAYER_O, game.toPlay())
+        val expectedStatus = GameStatus.Playing(Player.PLAYER_O)
+        assertEquals(expectedStatus, game.status())
     }
 
     @Test
@@ -48,7 +52,7 @@ class GameShould {
         game.play(Tile.BOTTOM_LEFT)
         game.play(Tile.BOTTOM_MIDDLE)
 
-        val expectedStatus = GameStatus.Playing
+        val expectedStatus = GameStatus.Playing(Player.PLAYER_X)
         assertEquals(expectedStatus, game.status())
     }
 
