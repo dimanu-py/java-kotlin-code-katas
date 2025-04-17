@@ -3,6 +3,7 @@ package org.dimanu.tictactoe
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 class BoardShould {
@@ -42,5 +43,14 @@ class BoardShould {
         board.playOn(Tile.BOTTOM_RIGHT, Player.PLAYER_X)
 
         assertTrue(board.isFull())
+    }
+
+    @Test
+    fun `detect when board is not full`() {
+        board.playOn(Tile.TOP_LEFT, Player.PLAYER_X)
+        board.playOn(Tile.TOP_MIDDLE, Player.PLAYER_O)
+        board.playOn(Tile.TOP_RIGHT, Player.PLAYER_X)
+
+        assertFalse(board.isFull())
     }
 }

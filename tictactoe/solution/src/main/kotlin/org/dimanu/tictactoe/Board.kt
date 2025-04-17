@@ -1,5 +1,7 @@
 package org.dimanu.tictactoe
 
+private const val MAX_SIZE = 9
+
 class Board {
     private var tiles: MutableMap<Tile, Player> = mutableMapOf()
 
@@ -12,6 +14,6 @@ class Board {
     }
 
     fun isFull(): Boolean {
-        return true
+        return tiles.size == MAX_SIZE
     }
 }
