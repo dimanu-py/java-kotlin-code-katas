@@ -1,5 +1,7 @@
 package org.dimanu.tictactoe
 
-data class GameStatus(private val status: Status, private val winner: Player?) {
-
+sealed interface GameStatus {
+    data object Playing: GameStatus
+    data object Draw: GameStatus
+    data class Win(val winner: Player): GameStatus
 }
