@@ -15,4 +15,11 @@ class Game(private var board: Board) {
         currentPlayer = currentPlayer.nextPlayertoPlay()
     }
 
+    fun status(): GameStatus {
+        return GameStatus(
+            status = Status.PLAYING,
+            winner = null
+        )
+    }
+
 }
