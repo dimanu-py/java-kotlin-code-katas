@@ -1,7 +1,13 @@
 package org.dimanu.tictactoe
 
 class Game {
+    private var currentPlayer: Player = Player.PLAYER_X
+
     fun toPlay(): Player {
-        return Player.PLAYER_X
+        return currentPlayer
+    }
+
+    fun play() {
+        currentPlayer = Player.PLAYER_O
     }
 }

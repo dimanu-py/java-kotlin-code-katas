@@ -1,5 +1,6 @@
 package org.dimanu.tictactoe
 
 enum class Player {
-    PLAYER_X
+    PLAYER_X,
+    PLAYER_O
 }
