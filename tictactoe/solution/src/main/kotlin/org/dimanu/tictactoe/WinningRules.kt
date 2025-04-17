@@ -8,6 +8,8 @@ class WinningRules {
         listOf(Tile.TOP_LEFT, Tile.MIDDLE_LEFT, Tile.BOTTOM_LEFT),
         listOf(Tile.TOP_MIDDLE, Tile.MIDDLE_MIDDLE, Tile.BOTTOM_MIDDLE),
         listOf(Tile.TOP_RIGHT, Tile.MIDDLE_RIGHT, Tile.BOTTOM_RIGHT),
+        listOf(Tile.TOP_LEFT, Tile.MIDDLE_MIDDLE, Tile.BOTTOM_RIGHT),
+        listOf(Tile.TOP_RIGHT, Tile.MIDDLE_MIDDLE, Tile.BOTTOM_LEFT),
     )
 
     fun matches(markedTiles: List<Tile>): Boolean {

@@ -23,6 +23,14 @@ class WinningRulesShould {
         assertTrue(winningRules.matches(markedTiles))
     }
 
+    @ParameterizedTest
+    @MethodSource("diagonalWinningRules")
+    fun `detect diagonal wins`(markedTiles: List<Tile>) {
+        val winningRules = WinningRules()
+
+        assertTrue(winningRules.matches(markedTiles))
+    }
+
     companion object {
         @JvmStatic
         fun horizontalWinningRules() = listOf(
@@ -36,6 +44,12 @@ class WinningRulesShould {
             listOf(Tile.TOP_LEFT, Tile.MIDDLE_LEFT, Tile.BOTTOM_LEFT),
             listOf(Tile.TOP_MIDDLE, Tile.MIDDLE_MIDDLE, Tile.BOTTOM_MIDDLE),
             listOf(Tile.TOP_RIGHT, Tile.MIDDLE_RIGHT, Tile.BOTTOM_RIGHT),
+        )
+
+        @JvmStatic
+        fun diagonalWinningRules() = listOf(
+            listOf(Tile.TOP_LEFT, Tile.MIDDLE_MIDDLE, Tile.BOTTOM_RIGHT),
+            listOf(Tile.TOP_RIGHT, Tile.MIDDLE_MIDDLE, Tile.BOTTOM_LEFT)
         )
     }
 }
