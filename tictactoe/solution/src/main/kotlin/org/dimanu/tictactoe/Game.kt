@@ -18,6 +18,13 @@ class Game(private var board: Board, private var winningRules: WinningRules) {
         if (hasWon()) {
             status = Status.WIN
             winner = currentPlayer
+            return
+        }
+
+        if (isADraw()) {
+            status = Status.DRAW
+            winner = null
+            return
         }
 
         currentPlayer = currentPlayer.nextPlayerToPlay()
@@ -28,6 +35,8 @@ class Game(private var board: Board, private var winningRules: WinningRules) {
         val currentPlayerMarkedTiles = board.tilesPlayedBy(currentPlayer)
         return winningRules.matches(currentPlayerMarkedTiles)
     }
+
+    private fun isADraw(): Boolean = board.isFull()
 
     fun status(): GameStatus {
         return GameStatus(

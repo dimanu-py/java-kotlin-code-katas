@@ -87,4 +87,23 @@ class GameShould {
         )
         assertEquals(expectedStatus, game.status())
     }
+
+    @Test
+    fun `declare a draw when all tiles are marked and there is no winner`() {
+        game.play(Tile.TOP_LEFT)
+        game.play(Tile.TOP_MIDDLE)
+        game.play(Tile.TOP_RIGHT)
+        game.play(Tile.MIDDLE_LEFT)
+        game.play(Tile.MIDDLE_MIDDLE)
+        game.play(Tile.BOTTOM_RIGHT)
+        game.play(Tile.MIDDLE_RIGHT)
+        game.play(Tile.BOTTOM_LEFT)
+        game.play(Tile.BOTTOM_MIDDLE)
+
+        val expectedStatus = GameStatus(
+            status=Status.DRAW,
+            winner=null,
+        )
+        assertEquals(expectedStatus, game.status())
+    }
 }
