@@ -7,7 +7,7 @@ class Game {
         return currentPlayer
     }
 
-    fun play() {
+    fun play(tileToPlay: Tile) {
         currentPlayer = currentPlayer.nextPlayertoPlay()
     }
 

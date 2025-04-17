@@ -16,7 +16,7 @@ class GameShould {
     fun `wait for player O to play after player X`() {
         val game = Game()
 
-        game.play()
+        game.play(Tile.TOP_LEFT)
 
         assertEquals(Player.PLAYER_O, game.toPlay())
     }
@@ -25,8 +25,8 @@ class GameShould {
     fun `wait for player X to play after player O`() {
         val game = Game()
 
-        game.play()
-        game.play()
+        game.play(Tile.TOP_LEFT)
+        game.play(Tile.TOP_LEFT)
 
         assertEquals(Player.PLAYER_X, game.toPlay())
     }
