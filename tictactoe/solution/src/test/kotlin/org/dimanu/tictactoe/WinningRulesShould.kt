@@ -7,28 +7,12 @@ import kotlin.test.assertTrue
 class WinningRulesShould {
 
     @ParameterizedTest
-    @MethodSource("horizontalWinningRules")
-    fun `detect horizontal rows wins`(markedTiles: List<Tile>) {
+    @MethodSource("horizontalWinningRules", "verticalWinningRules", "diagonalWinningRules")
+    fun `detect wins`(markedTiles: List<Tile>) {
         val winningRules = WinningRules()
 
         assertTrue(winningRules.matches(markedTiles))
 
-    }
-
-    @ParameterizedTest
-    @MethodSource("verticalWinningRules")
-    fun `detect vertical columns wins`(markedTiles: List<Tile>) {
-        val winningRules = WinningRules()
-
-        assertTrue(winningRules.matches(markedTiles))
-    }
-
-    @ParameterizedTest
-    @MethodSource("diagonalWinningRules")
-    fun `detect diagonal wins`(markedTiles: List<Tile>) {
-        val winningRules = WinningRules()
-
-        assertTrue(winningRules.matches(markedTiles))
     }
 
     companion object {
