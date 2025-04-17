@@ -6,12 +6,18 @@ import org.dimanu.tripservice.user.User
 open class TripService(private val tripRepository: TripRepository) {
 
     fun getTripsByUser(loggedUser: User?, requestedUser: User): List<Trip> {
-        val loggedUser: User = loggedUser ?: throw UserNotLoggedInException()
+        verifyUserIsLoggedIn(loggedUser)
 
-        if (requestedUser.isFriendWith(loggedUser)) {
+        if (requestedUser.isFriendWith(loggedUser!!)) {
             return tripRepository.findTripsByUser(requestedUser)
         }
         return ArrayList<Trip>()
+    }
+
+    private fun verifyUserIsLoggedIn(user: User?) {
+        if (user == null) {
+            throw UserNotLoggedInException()
+        }
     }
 
 }
