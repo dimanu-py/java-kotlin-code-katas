@@ -9,11 +9,7 @@ class Board {
 
     fun playOn(tile: Tile, player: Player) = player.also { tiles[tile] = it }
 
-    fun tilesPlayedBy(player: Player): List<Tile> {
-        return tiles.filterValues { it == player }.keys.toList()
-    }
+    fun tilesPlayedBy(player: Player): List<Tile> = tiles.filterValues { it == player }.keys.toList()
 
-    fun isFull(): Boolean {
-        return tiles.size == MAX_SIZE
-    }
+    fun isFull(): Boolean = tiles.size == MAX_SIZE
 }
