@@ -11,7 +11,7 @@ class Game(private var board: Board) {
         if (board.isMarked(tileToPlay)) {
             return
         }
-        board.playOn(tileToPlay)
+        board.playOn(tileToPlay, currentPlayer)
         currentPlayer = currentPlayer.nextPlayertoPlay()
     }
 

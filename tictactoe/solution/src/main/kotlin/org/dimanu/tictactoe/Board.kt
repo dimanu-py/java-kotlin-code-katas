@@ -6,4 +6,6 @@ class Board {
     fun isMarked(tile: Tile): Boolean = tiles.contains(tile)
 
     fun playOn(tile: Tile) = tiles.add(tile)
+    fun playOn(tile: Tile, player: Player) = tiles.add(tile)
+
 }
