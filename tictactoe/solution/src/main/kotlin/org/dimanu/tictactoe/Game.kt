@@ -1,7 +1,6 @@
 package org.dimanu.tictactoe
 
-class Game {
-    private val tiles: MutableList<Tile> = mutableListOf()
+class Game(private var board: Board) {
     private var currentPlayer: Player = Player.PLAYER_X
 
     fun toPlay(): Player {
@@ -9,10 +8,10 @@ class Game {
     }
 
     fun play(tileToPlay: Tile) {
-        if (tiles.contains(tileToPlay)) {
+        if (board.isMarked(tileToPlay)) {
             return
         }
-        tiles.add(tileToPlay)
+        board.playOn(tileToPlay)
         currentPlayer = currentPlayer.nextPlayertoPlay()
     }
 

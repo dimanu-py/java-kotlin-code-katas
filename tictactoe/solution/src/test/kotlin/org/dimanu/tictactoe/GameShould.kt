@@ -7,10 +7,12 @@ import kotlin.test.assertEquals
 class GameShould {
 
     private lateinit var game: Game
+    private lateinit var board: Board
 
     @BeforeEach
     fun setUp() {
-        game = Game()
+        board = Board()
+        game = Game(board)
     }
 
     @Test
