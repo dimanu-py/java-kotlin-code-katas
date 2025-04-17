@@ -9,10 +9,6 @@ import org.dimanu.tripservice.user.User
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
-class SeamTripService(private val loggedUser: User?, private val tripRepository: TripRepository) : TripService(loggedUser, tripRepository) {
-
-}
-
 
 class TripServiceShould {
 
@@ -27,7 +23,7 @@ class TripServiceShould {
     @Test
     fun `not logged in user cannot interact with application`() {
         this.loggedUser = guestUser
-        val tripService = SeamTripService(loggedUser, tripRepository)
+        val tripService = TripService(loggedUser, tripRepository)
 
         assertThrows<UserNotLoggedInException> {
             tripService.getTripsByUser(anyUser)
@@ -37,7 +33,7 @@ class TripServiceShould {
     @Test
     fun `user gets no trips when is not friend with logged user`() {
         this.loggedUser = applicationUser
-        val tripService = SeamTripService(loggedUser, tripRepository)
+        val tripService = TripService(loggedUser, tripRepository)
         val stranger = UserMother.any()
 
         val trips = tripService.getTripsByUser(stranger)
@@ -48,7 +44,7 @@ class TripServiceShould {
     @Test
     fun `user gets its friends trips`() {
         this.loggedUser = applicationUser
-        val tripService = SeamTripService(loggedUser, tripRepository)
+        val tripService = TripService(loggedUser, tripRepository)
         val friend = UserMother.withFriendsAndTrips(friends = listOf(loggedUser!!), trips = listOf(canadaTrip))
         every { tripRepository.findTripsByUser(any()) } returns listOf(canadaTrip)
 
