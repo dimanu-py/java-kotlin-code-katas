@@ -10,7 +10,7 @@ class GameShould {
 
     @BeforeEach
     fun setUp() {
-        game = Game(Board(), WinningRules())
+        game = Game(Board.empty(), WinningRules())
     }
 
     @Test

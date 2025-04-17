@@ -12,7 +12,7 @@ class BoardShould {
 
     @BeforeEach
     fun setUp() {
-        board = Board()
+        board = Board.empty()
     }
 
     @Test

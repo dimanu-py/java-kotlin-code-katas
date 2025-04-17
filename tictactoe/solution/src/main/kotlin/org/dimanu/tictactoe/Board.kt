@@ -2,7 +2,12 @@ package org.dimanu.tictactoe
 
 private const val MAX_SIZE = 9
 
-class Board {
+class Board private constructor() {
+
+    companion object {
+        fun empty(): Board = Board()
+    }
+
     private var tiles: MutableMap<Tile, Player> = mutableMapOf()
 
     fun isMarked(tile: Tile): Boolean = tiles.contains(tile)
