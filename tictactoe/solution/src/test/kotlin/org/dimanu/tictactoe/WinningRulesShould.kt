@@ -20,6 +20,7 @@ class WinningRulesShould {
         fun horizontalWinningRules() = listOf(
             listOf(Tile.TOP_LEFT, Tile.TOP_MIDDLE, Tile.TOP_RIGHT),
             listOf(Tile.MIDDLE_LEFT, Tile.MIDDLE_MIDDLE, Tile.MIDDLE_RIGHT),
+            listOf(Tile.BOTTOM_LEFT, Tile.BOTTOM_MIDDLE, Tile.BOTTOM_RIGHT)
         )
     }
 }
