@@ -20,7 +20,7 @@ class Game(private var board: Board) {
             winner = currentPlayer
         }
 
-        currentPlayer = currentPlayer.nextPlayertoPlay()
+        currentPlayer = currentPlayer.nextPlayerToPlay()
 
     }
 
