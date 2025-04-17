@@ -15,6 +15,7 @@ allprojects {
 
     dependencies {
         testImplementation("org.jetbrains.kotlin:kotlin-test")
+        testImplementation("org.junit.jupiter:junit-jupiter-params")
     }
 
     tasks.test {
