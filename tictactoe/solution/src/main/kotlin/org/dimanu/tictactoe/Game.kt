@@ -1,6 +1,6 @@
 package org.dimanu.tictactoe
 
-class Game(private var board: Board) {
+class Game(private var board: Board, private var winningRules: WinningRules) {
     private var status: Status = Status.PLAYING
     private var winner: Player? = null
     private var currentPlayer: Player = Player.PLAYER_X
@@ -25,9 +25,8 @@ class Game(private var board: Board) {
     }
 
     private fun hasWon(): Boolean {
-        val playerMarkedTiles = board.tilesPlayedBy(Player.PLAYER_X)
-        val playerHasMarkedTopRow = playerMarkedTiles.containsAll(listOf(Tile.TOP_LEFT, Tile.TOP_RIGHT, Tile.TOP_MIDDLE))
-        return playerHasMarkedTopRow
+        val currentPlayerMarkedTiles = board.tilesPlayedBy(currentPlayer)
+        return winningRules.matches(currentPlayerMarkedTiles)
     }
 
     fun status(): GameStatus {
