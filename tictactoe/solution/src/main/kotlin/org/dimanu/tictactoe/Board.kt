@@ -8,12 +8,6 @@ class Board {
     fun playOn(tile: Tile, player: Player) = player.also { tiles[tile] = it }
 
     fun tilesPlayedBy(player: Player): List<Tile> {
-        val playedTiles: MutableList<Tile> = mutableListOf()
-        for (tile in tiles.entries) {
-            if (tile.value == player) {
-                playedTiles.add(tile.key)
-            }
-        }
-        return playedTiles
+        return tiles.filterValues { it == player }.keys.toList()
     }
 }
