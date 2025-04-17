@@ -28,4 +28,19 @@ class BoardShould {
         val playedPositions: List<Tile> = board.tilesPlayedBy(Player.PLAYER_X)
         assertEquals(playedPositions, listOf(Tile.TOP_LEFT))
     }
+
+    @Test
+    fun `detect when board is full`() {
+        board.playOn(Tile.TOP_LEFT, Player.PLAYER_X)
+        board.playOn(Tile.TOP_MIDDLE, Player.PLAYER_O)
+        board.playOn(Tile.TOP_RIGHT, Player.PLAYER_X)
+        board.playOn(Tile.MIDDLE_LEFT, Player.PLAYER_O)
+        board.playOn(Tile.MIDDLE_MIDDLE, Player.PLAYER_X)
+        board.playOn(Tile.MIDDLE_RIGHT, Player.PLAYER_O)
+        board.playOn(Tile.BOTTOM_LEFT, Player.PLAYER_X)
+        board.playOn(Tile.BOTTOM_MIDDLE, Player.PLAYER_O)
+        board.playOn(Tile.BOTTOM_RIGHT, Player.PLAYER_X)
+
+        assertTrue(board.isFull())
+    }
 }
