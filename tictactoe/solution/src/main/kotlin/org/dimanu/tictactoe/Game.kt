@@ -10,7 +10,7 @@ class Game(private var board: Board, private var winningRules: WinningRules) {
     }
 
     fun play(tileToPlay: Tile) {
-        if (board.isMarked(tileToPlay)) {
+        if (isIllegalPlay(tileToPlay)) {
             return
         }
         board.playOn(tileToPlay, currentPlayer)
@@ -30,6 +30,8 @@ class Game(private var board: Board, private var winningRules: WinningRules) {
         currentPlayer = currentPlayer.nextPlayerToPlay()
 
     }
+
+    private fun isIllegalPlay(tileToPlay: Tile): Boolean = board.isMarked(tileToPlay)
 
     private fun hasWon(): Boolean {
         val currentPlayerMarkedTiles = board.tilesPlayedBy(currentPlayer)
