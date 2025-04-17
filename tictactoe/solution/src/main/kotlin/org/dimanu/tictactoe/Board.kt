@@ -10,4 +10,8 @@ class Board {
     fun tilesPlayedBy(player: Player): List<Tile> {
         return tiles.filterValues { it == player }.keys.toList()
     }
+
+    fun isFull(): Boolean {
+        return true
+    }
 }
