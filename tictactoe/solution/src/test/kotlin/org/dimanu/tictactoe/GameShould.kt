@@ -42,4 +42,18 @@ class GameShould {
 
         assertEquals(Player.PLAYER_O, game.toPlay())
     }
+
+    @Test
+    fun `not declare a winner if no player has score three consecutive tiles`() {
+        game.play(Tile.TOP_LEFT)
+        game.play(Tile.TOP_MIDDLE)
+        game.play(Tile.BOTTOM_LEFT)
+        game.play(Tile.BOTTOM_MIDDLE)
+
+        val expectedStatus = GameStatus(
+            status=Status.PLAYING,
+            winner=null,
+        )
+        assertEquals(expectedStatus, game.status())
+    }
 }
