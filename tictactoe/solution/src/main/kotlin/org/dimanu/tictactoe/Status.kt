@@ -1,5 +1,6 @@
 package org.dimanu.tictactoe
 
 enum class Status {
-    PLAYING
+    PLAYING,
+    WIN
 }
