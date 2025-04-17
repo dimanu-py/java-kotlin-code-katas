@@ -1,16 +1,24 @@
 package org.dimanu.tictactoe
 
-import org.junit.jupiter.api.Test
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.MethodSource
 import kotlin.test.assertTrue
 
 class WinningRulesShould {
 
-    @Test
-    fun `detect horizontal rows wins`() {
+    @ParameterizedTest
+    @MethodSource("horizontalWinningRules")
+    fun `detect horizontal rows wins`(markedTiles: List<Tile>) {
         val winningRules = WinningRules()
-        val markedTiles = listOf(Tile.TOP_LEFT, Tile.TOP_MIDDLE, Tile.TOP_RIGHT)
 
         assertTrue(winningRules.matches(markedTiles))
 
+    }
+
+    companion object {
+        @JvmStatic
+        fun horizontalWinningRules() = listOf(
+            listOf(Tile.TOP_LEFT, Tile.TOP_MIDDLE, Tile.TOP_RIGHT)
+        )
     }
 }
