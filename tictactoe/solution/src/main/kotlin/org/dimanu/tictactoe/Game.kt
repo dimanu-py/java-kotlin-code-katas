@@ -8,6 +8,8 @@ class Game {
     }
 
     fun play() {
-        currentPlayer = Player.PLAYER_O
+        currentPlayer = alternatePlayers()
     }
+
+    private fun alternatePlayers() = if (currentPlayer == Player.PLAYER_X) Player.PLAYER_O else Player.PLAYER_X
 }
