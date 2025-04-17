@@ -56,7 +56,7 @@ class GameShould {
     }
 
     @Test
-    fun `declare player X as winner if he scores three consecutive tiles in a row`() {
+    fun `declare player X as winner if scores three consecutive tiles`() {
         game.play(Tile.TOP_LEFT)
         game.play(Tile.MIDDLE_LEFT)
         game.play(Tile.TOP_MIDDLE)
@@ -66,6 +66,24 @@ class GameShould {
         val expectedStatus = GameStatus(
             status=Status.WIN,
             winner=Player.PLAYER_X,
+        )
+        assertEquals(expectedStatus, game.status())
+    }
+
+    @Test
+    fun `declare player O as winner if scores three consecutive tiles`() {
+        game.play(Tile.TOP_RIGHT)
+        game.play(Tile.TOP_LEFT)
+        game.play(Tile.BOTTOM_LEFT)
+        game.play(Tile.MIDDLE_MIDDLE)
+        game.play(Tile.BOTTOM_RIGHT)
+        game.play(Tile.BOTTOM_MIDDLE)
+        game.play(Tile.MIDDLE_LEFT)
+        game.play(Tile.TOP_MIDDLE)
+
+        val expectedStatus = GameStatus(
+            status=Status.WIN,
+            winner=Player.PLAYER_O,
         )
         assertEquals(expectedStatus, game.status())
     }
