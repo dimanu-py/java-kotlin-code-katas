@@ -23,20 +23,20 @@ class TripServiceShould {
     @Test
     fun `not logged in user cannot interact with application`() {
         this.loggedUser = guestUser
-        val tripService = TripService(loggedUser, tripRepository)
+        val tripService = TripService(tripRepository)
 
         assertThrows<UserNotLoggedInException> {
-            tripService.getTripsByUser(anyUser)
+            tripService.getTripsByUser(loggedUser, anyUser)
         }
     }
 
     @Test
     fun `user gets no trips when is not friend with logged user`() {
         this.loggedUser = applicationUser
-        val tripService = TripService(loggedUser, tripRepository)
+        val tripService = TripService(tripRepository)
         val stranger = UserMother.any()
 
-        val trips = tripService.getTripsByUser(stranger)
+        val trips = tripService.getTripsByUser(loggedUser, stranger)
 
         assert(trips.isEmpty())
     }
@@ -44,11 +44,11 @@ class TripServiceShould {
     @Test
     fun `user gets its friends trips`() {
         this.loggedUser = applicationUser
-        val tripService = TripService(loggedUser, tripRepository)
+        val tripService = TripService(tripRepository)
         val friend = UserMother.withFriendsAndTrips(friends = listOf(loggedUser!!), trips = listOf(canadaTrip))
         every { tripRepository.findTripsByUser(any()) } returns listOf(canadaTrip)
 
-        val trips = tripService.getTripsByUser(friend)
+        val trips = tripService.getTripsByUser(loggedUser, friend)
 
         assert(trips.isNotEmpty())
         assert(trips.contains(canadaTrip))
