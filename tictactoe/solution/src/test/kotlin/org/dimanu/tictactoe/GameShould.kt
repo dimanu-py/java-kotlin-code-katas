@@ -11,4 +11,13 @@ class GameShould {
 
         assertEquals(Player.PLAYER_X, game.toPlay())
     }
+
+    @Test
+    fun `wait for player O to play after player X`() {
+        val game = Game()
+
+        game.play()
+
+        assertEquals(Player.PLAYER_O, game.toPlay())
+    }
 }
