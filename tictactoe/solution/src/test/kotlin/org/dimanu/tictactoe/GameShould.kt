@@ -48,10 +48,7 @@ class GameShould {
         game.play(Tile.BOTTOM_LEFT)
         game.play(Tile.BOTTOM_MIDDLE)
 
-        val expectedStatus = GameStatus(
-            status=Status.PLAYING,
-            winner=null,
-        )
+        val expectedStatus = GameStatus.Playing
         assertEquals(expectedStatus, game.status())
     }
 
@@ -63,10 +60,7 @@ class GameShould {
         game.play(Tile.BOTTOM_MIDDLE)
         game.play(Tile.TOP_RIGHT)
 
-        val expectedStatus = GameStatus(
-            status=Status.WIN,
-            winner=Player.PLAYER_X,
-        )
+        val expectedStatus = GameStatus.Win(Player.PLAYER_X)
         assertEquals(expectedStatus, game.status())
     }
 
@@ -81,10 +75,7 @@ class GameShould {
         game.play(Tile.MIDDLE_LEFT)
         game.play(Tile.TOP_MIDDLE)
 
-        val expectedStatus = GameStatus(
-            status=Status.WIN,
-            winner=Player.PLAYER_O,
-        )
+        val expectedStatus = GameStatus.Win(Player.PLAYER_O)
         assertEquals(expectedStatus, game.status())
     }
 
@@ -100,10 +91,7 @@ class GameShould {
         game.play(Tile.BOTTOM_LEFT)
         game.play(Tile.BOTTOM_MIDDLE)
 
-        val expectedStatus = GameStatus(
-            status=Status.DRAW,
-            winner=null,
-        )
+        val expectedStatus = GameStatus.Draw
         assertEquals(expectedStatus, game.status())
     }
 }
