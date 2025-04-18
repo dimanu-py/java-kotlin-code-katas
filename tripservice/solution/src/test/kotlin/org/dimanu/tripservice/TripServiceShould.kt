@@ -17,8 +17,8 @@ class TripServiceShould {
     private lateinit var tripService: TripService
 
     private val guestUser = null
-    private val anyUser = UserMother.any()
-    private val applicationUser = UserMother.any()
+    private val anyUser = UserMother.create()
+    private val applicationUser = UserMother.create()
     private val canadaTrip = TripMother.any()
     private var loggedUser: User? = null
 
@@ -40,7 +40,7 @@ class TripServiceShould {
     @Test
     fun `user gets no trips when is not friend with logged user`() {
         this.loggedUser = applicationUser
-        val stranger = UserMother.any()
+        val stranger = UserMother.create()
 
         val trips = tripService.getTripsByUser(loggedUser, stranger)
 
@@ -50,7 +50,7 @@ class TripServiceShould {
     @Test
     fun `user gets its friends trips`() {
         this.loggedUser = applicationUser
-        val friend = UserMother.withFriendsAndTrips(friends = listOf(loggedUser!!), trips = listOf(canadaTrip))
+        val friend = UserMother.create(friends = listOf(loggedUser!!), trips = listOf(canadaTrip))
         every { tripRepository.findTripsByUser(any()) } returns listOf(canadaTrip)
 
         val trips = tripService.getTripsByUser(loggedUser, friend)

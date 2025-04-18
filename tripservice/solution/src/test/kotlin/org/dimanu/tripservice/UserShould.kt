@@ -6,14 +6,14 @@ class UserShould {
 
     @Test
     fun `not have any trips when created`() {
-        val user = UserMother.any()
+        val user = UserMother.create()
 
         assert(user.trips.isEmpty())
     }
 
     @Test
     fun `not have any friends when created`() {
-        val user = UserMother.any()
+        val user = UserMother.create()
 
         assert(user.friends.isEmpty())
     }
@@ -21,7 +21,7 @@ class UserShould {
     @Test
     fun `be able to add trips`() {
         val trip = TripMother.any()
-        val user = UserMother.withTrips(listOf(trip))
+        val user = UserMother.create(trips = listOf(trip))
 
         assert(user.trips.isNotEmpty())
         assert(user.trips.contains(trip))
@@ -29,8 +29,8 @@ class UserShould {
 
     @Test
     fun `be able to add friends`() {
-        val friend = UserMother.any()
-        val user = UserMother.withFriends(listOf(friend))
+        val friend = UserMother.create()
+        val user = UserMother.create(friends = listOf(friend))
 
         assert(user.friends.isNotEmpty())
         assert(user.friends.contains(friend))
@@ -38,16 +38,16 @@ class UserShould {
 
     @Test
     fun `be able to know if user is not a friend`() {
-        val user = UserMother.any()
-        val friend = UserMother.any()
+        val user = UserMother.create()
+        val friend = UserMother.create()
 
         assert(!user.isFriendWith(friend))
     }
 
     @Test
     fun `be able to know if user is a friend`() {
-        val friend = UserMother.any()
-        val user = UserMother.withFriends(listOf(friend))
+        val friend = UserMother.create()
+        val user = UserMother.create(friends = listOf(friend))
 
         user.addFriend(friend)
 
